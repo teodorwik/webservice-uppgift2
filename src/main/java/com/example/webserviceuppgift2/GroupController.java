@@ -1,5 +1,6 @@
 package com.example.webserviceuppgift2;
 
+import org.apache.catalina.Group;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,13 +25,15 @@ public class GroupController {
         return groupRepository.save(groups);
     }
 
-    //changeName
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Groups> updateGroup(@PathVariable(value = "id")String id) {
+        return null;
+    }
 
     @DeleteMapping("/delete/{id}")
     public void deleteGroup(@PathVariable(value = "id") String id) throws Exception{
         Groups group = groupRepository.findById(id).orElseThrow();
         groupRepository.delete(group);
-        return;
     }
 }
 
